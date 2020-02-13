@@ -117,7 +117,7 @@ if (isset($_SESSION['userId'])){
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Co Board</h1>
+                <h1 class="mt-4">Co Board Admin</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Co Board</li>
                 </ol>
