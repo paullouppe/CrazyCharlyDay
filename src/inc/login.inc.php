@@ -1,8 +1,10 @@
 <?php
 
+require_once 'JsonResponse.php';
+
 $json = new JsonResponse();
 
-if(isset($_POST['login-submit'])){
+if( isset($_POST['mail']) && isset($_POST['pwd'])){
     session_start();
     require 'dbh.inc.php';
 
@@ -39,6 +41,7 @@ if(isset($_POST['login-submit'])){
                 }elseif ($pwdcheck == true){
                     session_start();
                     $_SESSION['userId'] = $row['idUser'];
+                    header("Location : ../../index.html");
                     $json->addSucess();
                     return $json->getJson();
                 }else{
