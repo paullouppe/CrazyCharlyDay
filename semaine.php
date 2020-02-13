@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
 session_start();
+require 'src/inc/dbh.inc.php';
+require 'src/inc/administrateur.php';
 if (isset($_SESSION['userId'])){
     if (isset($_SESSION['grade']) && $_SESSION['grade'] == "admin"){
 
@@ -125,6 +127,9 @@ if (isset($_SESSION['userId'])){
                             <div class="card-body">Lundi</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 <a class="small text-white " href="semaine.php">Crénaux de 18h à 19h</a>
+                                <?php
+                                echo calculercreneau("Lundi", 18, $conn);
+                                ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 <a class="small text-white " href="semaine.php">Crénaux de 19h à 20h</a>
@@ -297,7 +302,7 @@ if (isset($_SESSION['userId'])){
                         <a class="nav-link" href="index.php"
                         >
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Co Board</a
+                            Co Board (admin)</a
                         >
                         <div class="sb-sidenav-menu-heading">Interface</div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
@@ -365,6 +370,9 @@ if (isset($_SESSION['userId'])){
                                 <div class="card-body">Lundi</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white " href="semaine.php">Crénaux de 18h à 19h</a>
+                                    <?php
+                                     echo calculercreneau("Lundi", 18, $conn);
+                                    ?>
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white " href="semaine.php">Crénaux de 19h à 20h</a>
