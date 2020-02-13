@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <?php
-session_start();
-if (isset($_SESSION['userId'])){
 ?>
 <html lang="en">
     <head>
@@ -64,9 +62,4 @@ if (isset($_SESSION['userId'])){
     </body>
 </html>
 <?php
-}
-else{
-    header('Location: ./login.php');
-    exit();
-}
 ?>
