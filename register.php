@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION['userId'])){
+?>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -43,7 +47,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="login.html">Have an account? Go to login</a></div>
+                                        <div class="small"><a href="login.php">Have an account? Go to login</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -72,3 +76,10 @@
         <script src="src/js/app.js" type="module"></script>
     </body>
 </html>
+<?php
+}
+else{
+    header('Location: ./login.html');
+    exit();
+}
+?>

@@ -40,7 +40,7 @@ if (isset($_SESSION['userId'])){
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item" href="src/inc/logout.inc.php">Logout</a>
             </div>
         </li>
     </ul>
@@ -67,8 +67,8 @@ if (isset($_SESSION['userId'])){
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                          data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static
-                                Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.php">Static
+                                Navigation</a><a class="nav-link" href="layout-sidenav-light.php">Light Sidenav</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -91,9 +91,9 @@ if (isset($_SESSION['userId'])){
                             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
                                  data-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav"><a class="nav-link"
-                                                                           href="login.html">Login</a><a
-                                        class="nav-link" href="register.html">Register</a><a class="nav-link"
-                                                                                             href="password.html">Forgot
+                                                                           href="login.php">Login</a><a
+                                        class="nav-link" href="register.php">Register</a><a class="nav-link"
+                                                                                            href="password.html">Forgot
                                         Password</a></nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse"
@@ -144,7 +144,7 @@ if (isset($_SESSION['userId'])){
                             <div class="card bg-primary text-white mb-4 ml-3">
                                 <div class="card-body">Semaine A</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="semaine.html">Détails</a>
+                                    <a class="small text-white stretched-link" href="semaine.php">Détails</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -153,7 +153,7 @@ if (isset($_SESSION['userId'])){
                             <div class="card bg-warning text-white mb-4">
                                 <div class="card-body">Semaine B</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="semaine.html">Détails</a>
+                                    <a class="small text-white stretched-link" href="semaine.php">Détails</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@ if (isset($_SESSION['userId'])){
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">Semaine C</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="semaine.html">Détails</a>
+                                    <a class="small text-white stretched-link" href="semaine.php">Détails</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -171,7 +171,7 @@ if (isset($_SESSION['userId'])){
                             <div class="card bg-danger text-white mb-4 mr-3">
                                 <div class="card-body">Semaine D</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="semaine.html">Détails</a>
+                                    <a class="small text-white stretched-link" href="semaine.php">Détails</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -229,7 +229,7 @@ if (isset($_SESSION['userId'])){
 <?php
 }
 else{
-    header('Location: ./login.html');
+    header('Location: ./login.php');
     exit();
 }
 ?>

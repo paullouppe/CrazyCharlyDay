@@ -30,7 +30,7 @@ function returnData(Data){
                 break;
         }
     }else {
-        document.location.href="http://localhost/CrazyCharlyDay/login.html";
+        document.location.href="../../login.php";
     }
 }
 export function init() {

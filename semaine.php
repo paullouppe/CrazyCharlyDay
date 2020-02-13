@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION['userId'])){
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -31,7 +35,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item" href="src/inc/logout.inc.php">Logout</a>
             </div>
         </li>
     </ul>
@@ -53,7 +57,7 @@
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                         ></a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a></nav>
+                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.php">Static Navigation</a><a class="nav-link" href="layout-sidenav-light.php">Light Sidenav</a></nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
                     ><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
@@ -67,7 +71,7 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                                 ></a>
                             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="login.html">Login</a><a class="nav-link" href="register.html">Register</a><a class="nav-link" href="password.html">Forgot Password</a></nav>
+                                <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="login.php">Login</a><a class="nav-link" href="register.php">Register</a><a class="nav-link" href="password.html">Forgot Password</a></nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"
                             >Error
@@ -79,7 +83,7 @@
                         </nav>
                     </div>
                     <!--<div class="sb-sidenav-menu-heading">Addons</div>
-                    <a class="nav-link" href="charts.html"
+                    <a class="nav-link" href="charts.php"
                     ><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Charts</a
                     ><a class="nav-link" href="tables.html"
@@ -90,7 +94,9 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                Start Bootstrap
+                <?php
+                    echo $_SESSION['prenom'];
+                ?>
             </div>
         </nav>
     </div>
@@ -106,10 +112,10 @@
                         <div class="card bg-primary text-white mb-4">
                             <div class="card-body">Lundi</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 18h à 19h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 18h à 19h</a>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 19h à 20h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 19h à 20h</a>
                             </div>
                         </div>
                     </div>
@@ -124,16 +130,16 @@
                         <div class="card bg-primary text-white mb-4">
                             <div class="card-body">Mercredi</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 10h à 11h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 10h à 11h</a>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 11h à 12h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 11h à 12h</a>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 18h à 19h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 18h à 19h</a>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 19h à 20h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 19h à 20h</a>
                             </div>
                         </div>
                     </div>
@@ -148,10 +154,10 @@
                         <div class="card bg-warning text-white mb-4">
                             <div class="card-body">Vendredi</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 18h à 19h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 18h à 19h</a>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 19h à 20h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 19h à 20h</a>
                             </div>
                         </div>
                     </div>
@@ -159,22 +165,22 @@
                         <div class="card bg-success text-white mb-4">
                             <div class="card-body">Samedi</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 10h à 11h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 10h à 11h</a>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 11h à 12h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 11h à 12h</a>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 13h à 14h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 13h à 14h</a>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 14h à 15h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 14h à 15h</a>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 15h à 16h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 15h à 16h</a>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 16h à 17h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 16h à 17h</a>
                             </div>
                         </div>
                     </div>
@@ -182,10 +188,10 @@
                         <div class="card bg-danger text-white mb-4">
                             <div class="card-body">Dimanche</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 10h à 11h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 10h à 11h</a>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.html">Crénaux de 11h à 12h</a>
+                                <a class="small text-white " href="semaine.php">Crénaux de 11h à 12h</a>
                             </div>
                         </div>
                     </div>
@@ -217,3 +223,10 @@
 <script src="src/assets/demo/datatables-demo.js"></script>
 </body>
 </html>
+<?php
+}
+else{
+    header('Location: ./login.html');
+    exit();
+}
+?>
