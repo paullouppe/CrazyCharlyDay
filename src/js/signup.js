@@ -34,6 +34,6 @@ function returnData(Data){
     }
 }
 export function init() {
-    $("#submitbutton").click(signup);
+    $("#registersubmitbuttun").click(signup);
     console.log(1);
 }

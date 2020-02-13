@@ -5,9 +5,8 @@ require_once 'JsonResponse.php';
 $json = new JsonResponse();
 
 
-if (isset($_POST['signup-submit'])) {
+if (isset($_POST['nom'])) {
     session_start();
-
     require 'dbh.inc.php';
 
     $nom = $_POST['nom'];
