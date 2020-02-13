@@ -15,13 +15,16 @@ function returnData(Data){
     if (Data.sucess === false){
         switch (Data.error) {
             case "emptyfields":
-                console.log("empty");
+                $('#mdp').replaceWith('<div class="d-inline-flex alert alert-danger ml-2" role="alert" id="mdp">Champs vides !</div>');
                 break;
             case "sqlerror":
-                console.log("sqlerror");
+                $('#mdp').replaceWith('<div class="d-inline-flex alert alert-danger ml-2" role="alert" id="mdp">Erreur SQL !</div>');
+                break;
+            case "wrongpassword":
+                    $('#mdp').replaceWith('<div class="d-inline-flex alert alert-danger ml-2" role="alert" id="mdp">Mot de passe incorrect !</div>');
                 break;
             default:
-                console.log("error");
+                $('#mdp').replaceWith('<div class="d-inline-flex alert alert-danger ml-2" role="alert" id="mdp">Erreur !</div>');
                 break;
         }
     }else {

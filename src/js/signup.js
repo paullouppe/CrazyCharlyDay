@@ -16,16 +16,21 @@ function signup() {
 
 function returnData(Data){
     if (Data.sucess === false){
-        console.log(1);
         switch (Data.error) {
             case "emptyfields":
-                console.log("empty");
+                alert("Certains champs sont vides !");
                 break;
-            case "sqlerror":
-                console.log("sqlerror");
+            case "invalidmail":
+                alert("Adresse e-mail non valide !");
+                break;
+            case "passwordcheck":
+                alert("Les deux mots de passe ne sont pas identiques");
+                break;
+            case "passwordstrength":
+                alert("Votre mot de passe doit contenir au moins une majuscule, une minusucle, une nombre et doit contenir au moins 8 caractères");
                 break;
             default:
-                console.log("error");
+                alert("Erreur");
                 break;
         }
     }else {

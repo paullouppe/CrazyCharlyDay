@@ -22,6 +22,7 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Connexion</h3></div>
                                     <div class="card-body">
                                         <form id="loginform">
+                                            <p id="mdp"> </p>
                                             <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label><input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Adresse mail" name="mail"/></div>
                                             <div class="form-group"><label class="small mb-1" for="inputPassword">Mot de passe</label><input class="form-control py-4" id="inputPassword" type="password" placeholder="Mot de passe" name="pwd" /></div>
                                             <div class="form-group">
