@@ -1,20 +1,22 @@
 function login() {
     console.log(2);
     $.post(
-        'http://localhost/CrazyCharlyDay/src/inc/login.inc.php', // Un script PHP que l'on va créer juste après
+        'http://localhost/CrazyCharlyDay/src/inc/login.inc.php',
         {
-            username : $("#inputEmailAddress").val(),  // Nous récupérons la valeur de nos inputs que l'on fait passer à connexion.php
-            password : $("#inputPassword").val()
+            mail : $("#inputEmailAddress").val(),
+            pwd : $("#inputPassword").val()
         },
 
         returnData,
 
-        'json' // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+        'json'
     );
 }
 
 function returnData(Data){
+    console.log("zgueg");
     if (Data.sucess === false){
+        console.log(1);
         switch (Data.error) {
             case "emptyfields":
                 console.log("empty");
