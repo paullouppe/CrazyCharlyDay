@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 13 fév. 2020 à 12:24
+-- Généré le :  jeu. 13 fév. 2020 à 13:35
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -29,11 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `besoin` (
-  `id` int(3) NOT NULL,
-  `nom` varchar(50) NOT NULL,
-  `debut` date NOT NULL,
-  `fin` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -43,12 +40,20 @@ CREATE TABLE `besoin` (
 
 CREATE TABLE `creneau` (
   `idCreneau` int(3) NOT NULL,
-  `debut` date NOT NULL,
+  `debut` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `estasigne`
+--
+
+CREATE TABLE `estasigne` (
   `idUser` int(3) NOT NULL,
-  `nomUser` varchar(50) NOT NULL,
-  `idRol` int(3) NOT NULL,
-  `labelRol` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `idCreneau` int(3) NOT NULL,
+  `idBesoin` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -82,27 +87,29 @@ INSERT INTO `role` (`idRol`, `label`) VALUES
 CREATE TABLE `user` (
   `idUser` int(11) NOT NULL,
   `nom` varchar(30) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
   `mail` varchar(50) NOT NULL,
-  `pwd` varchar(100) NOT NULL
+  `pwd` varchar(100) NOT NULL,
+  `grade` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`idUser`, `nom`, `mail`, `pwd`) VALUES
-(1, 'Cassandre', '', ''),
-(2, 'Achille', '', ''),
-(3, 'Calypso', '', ''),
-(4, 'Bacchus', '', ''),
-(5, 'Diane', '', ''),
-(6, 'Clark', '', ''),
-(7, 'Helene', '', ''),
-(8, 'Jason', '', ''),
-(9, 'Bruce', '', ''),
-(10, 'Pénélope', '', ''),
-(11, 'Ariane', '', ''),
-(12, 'Lois', '', '');
+INSERT INTO `user` (`idUser`, `nom`, `prenom`, `mail`, `pwd`, `grade`) VALUES
+(1, 'Cassandre', '', '', '', ''),
+(2, 'Achille', '', '', '', ''),
+(3, 'Calypso', '', '', '', ''),
+(4, 'Bacchus', '', '', '', ''),
+(5, 'Diane', '', '', '', ''),
+(6, 'Clark', '', '', '', ''),
+(7, 'Helene', '', '', '', ''),
+(8, 'Jason', '', '', '', ''),
+(9, 'Bruce', '', '', '', ''),
+(10, 'Pénélope', '', '', '', ''),
+(11, 'Ariane', '', '', '', ''),
+(12, 'Lois', '', '', '', '');
 
 --
 -- Index pour les tables déchargées
@@ -118,9 +125,15 @@ ALTER TABLE `besoin`
 -- Index pour la table `creneau`
 --
 ALTER TABLE `creneau`
-  ADD PRIMARY KEY (`idCreneau`),
-  ADD KEY `idUser` (`idUser`,`nomUser`,`idRol`,`labelRol`),
-  ADD KEY `fkidrol` (`idRol`);
+  ADD PRIMARY KEY (`idCreneau`);
+
+--
+-- Index pour la table `estasigne`
+--
+ALTER TABLE `estasigne`
+  ADD PRIMARY KEY (`idUser`,`idCreneau`,`idBesoin`),
+  ADD KEY `fk1` (`idBesoin`),
+  ADD KEY `fk2` (`idCreneau`);
 
 --
 -- Index pour la table `role`
@@ -155,11 +168,12 @@ ALTER TABLE `user`
 --
 
 --
--- Contraintes pour la table `creneau`
+-- Contraintes pour la table `estasigne`
 --
-ALTER TABLE `creneau`
-  ADD CONSTRAINT `fkidrol` FOREIGN KEY (`idRol`) REFERENCES `role` (`idRol`),
-  ADD CONSTRAINT `fkiduser` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`);
+ALTER TABLE `estasigne`
+  ADD CONSTRAINT `fk1` FOREIGN KEY (`idBesoin`) REFERENCES `besoin` (`id`),
+  ADD CONSTRAINT `fk2` FOREIGN KEY (`idCreneau`) REFERENCES `creneau` (`idCreneau`),
+  ADD CONSTRAINT `fk3` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
