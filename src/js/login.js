@@ -28,7 +28,7 @@ function returnData(Data){
                 break;
         }
     }else {
-        console.log("sucess");
+        document.location.href="http://localhost/CrazyCharlyDay/index.html";
     }
 }
 export function init() {
