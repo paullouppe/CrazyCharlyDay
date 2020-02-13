@@ -11,7 +11,6 @@ if( isset($_POST['mail']) && isset($_POST['pwd'])){
     $password = $_POST['pwd'];
 
 
-
     if (empty($mail) || empty($password)){
         //erreur emptyfields
         $json->addError("emptyfields");
@@ -37,7 +36,7 @@ if( isset($_POST['mail']) && isset($_POST['pwd'])){
                 }elseif ($pwdcheck == true){
                     $_SESSION['userId'] = $row['idUser'];
                     $json->addSucess();
-                    return $json->getJson();
+                    echo $json->getJson();
                 }else{
                     //unhandeled
                     $json->addError("unheandeled");

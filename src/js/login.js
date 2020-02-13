@@ -6,7 +6,6 @@ function login() {
             mail : $("#inputEmailAddress").val(),
             pwd : $("#inputPassword").val()
         },
-
         returnData,
 
         'json'

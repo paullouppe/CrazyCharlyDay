@@ -10,7 +10,7 @@ class JsonResponse
         $this->jsonresult = array('error'=> null, 'sucess' => false);
     }
 
-    function addAttribute(string $attributnom, $attributvaleur){
+    function addAttribute($attributnom, $attributvaleur){
         $res = array($attributnom => $attributvaleur);
         array_push($res);
     }
