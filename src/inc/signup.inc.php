@@ -1,5 +1,7 @@
 <?php
 
+require_once 'JsonResponse.php';
+
 $json = new JsonResponse();
 
 
@@ -8,11 +10,12 @@ if (isset($_POST['signup-submit'])) {
 
     require 'dbh.inc.php';
 
-    $username = $_POST['nom'];
-    $username = $_POST['prenom'];
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
     $email = $_POST['mail'];
     $password = $_POST['pwd'];
     $passwordrepeat = $_POST['pwd-repeat'];
+    $grade = "";
 
     //sanitizing
     $username = filter_var($username, FILTER_SANITIZE_STRING);
@@ -26,91 +29,50 @@ if (isset($_POST['signup-submit'])) {
     //$specialChars = preg_match('@[^\w]@', $password);
 
     //errors
-    if (empty($username) || empty($email) || empty($password) || empty($passwordrepeat)) {
-        $_SESSION['status'] = "emptyfields";
-        $_SESSION['fillid'] = $username;
-        $_SESSION['fillmail'] = $email;
-        header("Location: ../signup.php");
-        exit();
+    if (empty($prenom) || empty($nom) || empty($email) || empty($password) || empty($passwordrepeat)) {
+        $json->addError("emptyfields");
+        echo $json->getJson();
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        $_SESSION['status'] = "invalidmailuid";
-        header("Location: ../signup.php");
-        exit();
+        $json->addError("invalidmailuid");
+        echo $json->getJson();
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $_SESSION['status'] = "invalidmail";
-        $_SESSION['fillid'] = $username;
-        header("Location: ../signup.php");
-        exit();
-    } else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        $_SESSION['status'] = "invaliduid";
-        $_SESSION['fillmail'] = $email;
-        header("Location: ../signup.php");
-        exit();
+        $json->addError("invalidmail");
+        echo $json->getJson();
     } else if ($password !== $passwordrepeat) {
-        $_SESSION['status'] = "passwordcheck";
-        $_SESSION['fillid'] = $username;
-        $_SESSION['fillmail'] = $email;
-        header("Location: ../signup.php");
-        exit();
+        $json->addError("passwordcheck");
+        echo $json->getJson();
     } else if (!$uppercase || !$lowercase || !$number || strlen($password) < 8){
-        $_SESSION['status'] = "passwordstrength";
-        $_SESSION['fillid'] = $username;
-        $_SESSION['fillmail'] = $email;
-        header("Location: ../signup.php");
-        exit();
+        $json->addError("passwordstrength");
+        echo $json->getJson();
     } else {
-        $sqluserverify = "SELECT uidUsers FROM users WHERE uidUsers=?";
-        $sqlmailverify = "SELECT emailUsers FROM users WHERE emailUsers=?";
-        $statementuserverify = mysqli_stmt_init($conn);
+        $sqlmailverify = "SELECT mail FROM user WHERE mail=?";
         $statementmailverify = mysqli_stmt_init($conn);
-        if (!mysqli_stmt_prepare($statementuserverify, $sqluserverify)) {
-            $_SESSION['status'] = "sqlerror";
-            header("Location: ../signup.php");
-            exit();
-        } elseif (!mysqli_stmt_prepare($statementmailverify, $sqlmailverify)){
-            $_SESSION['status'] = "sqlerror";
-            header("Location: ../signup.php");
-            exit();
+        if (!mysqli_stmt_prepare($statementmailverify, $sqlmailverify)){
+            $json->addError("sqlerror");
+            echo $json->getJson();
         } else {
-            //userid check
-            mysqli_stmt_bind_param($statementuserverify, "s", $username);
-            mysqli_stmt_execute($statementuserverify);
-            mysqli_stmt_store_result($statementuserverify);
-            $resultCheckuserverify = mysqli_stmt_num_rows($statementuserverify);
 
             //mail check
             mysqli_stmt_bind_param($statementmailverify, "s", $email);
             mysqli_stmt_execute($statementmailverify);
             mysqli_stmt_store_result($statementmailverify);
             $resultCheckmailverify = mysqli_stmt_num_rows($statementmailverify);
-            if ($resultCheckuserverify > 0) {
-                $_SESSION['status'] = "usertaken";
-                $_SESSION['fillid'] = $username;
-                $_SESSION['fillmail'] = $email;
-                header("Location: ../signup.php");
-                exit();
-            } elseif ($resultCheckmailverify > 0){
-                $_SESSION['status'] = "mailtaken";
-                $_SESSION['fillid'] = $username;
-                $_SESSION['fillmail'] = $email;
-                header("Location: ../signup.php");
-                exit();
+            if ($resultCheckmailverify > 0){
+                $json->addError("mailtaken");
+                echo $json->getJson();
             } else {
                 //insertion
-                $sql = "INSERT INTO users (uidUsers, emailUsers, pwdUser) VALUES (?, ?, ?)";
+                $sql = "INSERT INTO user (prenom, nom, mail, pwd, grade) VALUES (?, ?, ?, ?, ?)";
                 $statement = mysqli_stmt_init($conn);
                 if (!mysqli_stmt_prepare($statement, $sql)) {
-                    $_SESSION['status'] = "sqlerror";
-                    header("Location: ../signup.php");
-                    exit();
+                    $json->addError("sqlerror");
+                    echo $json->getJson();
                 } else {
                     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-                    mysqli_stmt_bind_param($statement, "sss", $username, $email, $hashedPwd);
+                    mysqli_stmt_bind_param($statement, "sssss", $prenom, $nom, $email, $hashedPwd, $grade);
                     mysqli_stmt_execute($statement);
-                    $_SESSION['status'] = "sucess";
-                    $_SESSION['filluid'] = $username;
-                    header("Location: ../login.php");
-                    exit();
+                    $json->addSucess();
+                    echo $json->getJson();
                 }
             }
         }
@@ -118,6 +80,6 @@ if (isset($_POST['signup-submit'])) {
     mysqli_stmt_close($statement);
     mysqli_close($conn);
 }else{
-    header("Location: ../signup.php");
-    exit();
+    $json->addError("cant access");
+    echo $json->getJson();
 }
