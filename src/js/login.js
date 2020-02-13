@@ -1,6 +1,6 @@
 function login() {
     $.post(
-        '../inc/login.inc.php',
+        'src/inc/login.inc.php',
         {
             mail : $("#inputEmailAddress").val(),
             pwd : $("#inputPassword").val()
@@ -25,7 +25,7 @@ function returnData(Data){
                 break;
         }
     }else {
-        document.location.href="../../index.php";
+        document.location.href="index.php";
     }
 }
 export function init() {
