@@ -1,6 +1,7 @@
 <?php
 require 'dbh.inc.php';
 
+echo "here";
 
 function calculercreneaucollab($jour, $debut, $conn){
     $sqlidbesoin = "SELECT * from besoin inner join creneau on creneau.idCreneau = besoin.idCreneau where creneau.jour = ? and creneau.jour = ?;";
