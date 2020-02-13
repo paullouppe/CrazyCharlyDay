@@ -4,4 +4,5 @@ function test(e) {
 
 export function init() {
     $('').on("click", test);
+    console.log("test");
 }
