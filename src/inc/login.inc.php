@@ -39,7 +39,7 @@ if( isset($_POST['mail']) && isset($_POST['pwd'])){
                     echo $json->getJson();
                 }else{
                     //unhandeled
-                    $json->addError("unheandeled");
+                    $json->addError("unhandeled");
                     echo $json->getJson();
                 }
             }else{
