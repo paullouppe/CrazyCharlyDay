@@ -10,7 +10,7 @@ if (isset($_SESSION['userId'])){
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Page Title - SB Admin</title>
+        <title>Connexion</title>
         <link href="src/css/styles.css" rel="stylesheet" />
         <link rel="icon" href="./favicon.ico">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -23,19 +23,18 @@ if (isset($_SESSION['userId'])){
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Connexion</h3></div>
                                     <div class="card-body">
                                         <form id="loginform">
-                                            <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label><input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" name="mail"/></div>
-                                            <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" name="pwd" /></div>
+                                            <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label><input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Adresse mail" name="mail"/></div>
+                                            <div class="form-group"><label class="small mb-1" for="inputPassword">Mot de passe</label><input class="form-control py-4" id="inputPassword" type="password" placeholder="Mot de passe" name="pwd" /></div>
                                             <div class="form-group">
-                                                <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Remember password</label></div>
                                             </div>
-                                            <input type="button" class="btn btn-primary" id="submitbutton" value="Login" /></div>
+                                            <input type="button" class="btn btn-primary text-center mt-lg-5" id="submitbutton" value="Connexion" /></div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="register.php">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="register.php">Besoin d'un compte? Inscrivez-vous!</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -47,11 +46,11 @@ if (isset($_SESSION['userId'])){
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2019</div>
+                            <div class="text-muted">Copyright &copy; CrazyCharlyDay 2020</div>
                             <div>
-                                <a href="#">Privacy Policy</a>
+                                <a href="#">Politique de confidentialité</a>
                                 &middot;
-                                <a href="#">Terms &amp; Conditions</a>
+                                <a href="#">Termes &amp; Conditions</a>
                             </div>
                         </div>
                     </div>

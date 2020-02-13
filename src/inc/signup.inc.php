@@ -32,9 +32,6 @@ if (isset($_POST['nom'])) {
     if (empty($prenom) || empty($nom) || empty($email) || empty($password) || empty($passwordrepeat)) {
         $json->addError("emptyfields");
         echo $json->getJson();
-    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        $json->addError("invalidmailuid");
-        echo $json->getJson();
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $json->addError("invalidmail");
         echo $json->getJson();
