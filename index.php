@@ -38,9 +38,9 @@ if (isset($_SESSION['userId'])){
             <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
+                <a class="dropdown-item" href="#">Paramètres</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item" href="login.html">Déconnexion</a>
             </div>
         </li>
     </ul>
@@ -50,25 +50,23 @@ if (isset($_SESSION['userId'])){
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Core</div>
                     <a class="nav-link" href="index.php"
                     >
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Dashboard</a
+                        Co Board</a
                     >
                     <div class="sb-sidenav-menu-heading">Interface</div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
                        aria-expanded="false" aria-controls="collapseLayouts"
                     >
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Layouts
+                        Affichages
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                         >
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                          data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static
-                                Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Test</a><a class="nav-link" href="layout-sidenav-light.html">Test</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -84,22 +82,21 @@ if (isset($_SESSION['userId'])){
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                             <a class="nav-link collapsed" href="#" data-toggle="collapse"
                                data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth"
-                            >Authentication
+                            >Authentification
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                                 >
                             </a>
                             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
                                  data-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav"><a class="nav-link"
-                                                                           href="login.html">Login</a><a
-                                        class="nav-link" href="register.html">Register</a><a class="nav-link"
-                                                                                             href="password.html">Forgot
-                                        Password</a></nav>
+                                                                           href="login.html">Connexion</a><a
+                                        class="nav-link" href="register.html">Inscription</a><a class="nav-link"
+                                                                                             href="password.html">Mot de passe oublié ?</a></nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse"
                                data-target="#pagesCollapseError" aria-expanded="false"
                                aria-controls="pagesCollapseError"
-                            >Error
+                            >Erreur
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                                 >
                             </a>
@@ -123,7 +120,7 @@ if (isset($_SESSION['userId'])){
                 </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
+                <div class="small">Connecté(é) en tant que :</div>
                 <?php
                     echo $_SESSION['prenom'];
                 ?>
@@ -133,9 +130,9 @@ if (isset($_SESSION['userId'])){
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Dashboard</h1>
+                <h1 class="mt-4">Co Board</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item active">Co Board</li>
                 </ol>
                 <div class="card bg-dark">
                     <div class="card-title text-center text-white">Cycle 1</div>
@@ -182,7 +179,7 @@ if (isset($_SESSION['userId'])){
                 <div class="row mt-2">
                     <div class="col-xl-6">
                         <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Area Chart Example</div>
+                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Exemple</div>
                             <div class="card-body">
                                 <canvas id="myAreaChart" width="100%" height="40"></canvas>
                             </div>
@@ -190,7 +187,7 @@ if (isset($_SESSION['userId'])){
                     </div>
                     <div class="col-xl-6">
                         <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Bar Chart Example</div>
+                            <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Exemple</div>
                             <div class="card-body">
                                 <canvas id="myBarChart" width="100%" height="40"></canvas>
                             </div>
@@ -202,11 +199,11 @@ if (isset($_SESSION['userId'])){
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2019</div>
+                    <div class="text-muted">Copyright &copy; CrazyCharlyDay 2020</div>
                     <div>
-                        <a href="#">Privacy Policy</a>
+                        <a href="#">Politique de confidentialité</a>
                         &middot;
-                        <a href="#">Terms &amp; Conditions</a>
+                        <a href="#">Termes &amp; Conditions</a>
                     </div>
                 </div>
             </div>
