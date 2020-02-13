@@ -1,6 +1,6 @@
 function signup() {
     $.post(
-        '../inc/signup.inc.php',
+        'src/inc/signup.inc.php',
         {
             prenom : $("#inputFirstName").val(),
             nom : $("#inputLastName").val(),
@@ -30,7 +30,7 @@ function returnData(Data){
                 break;
         }
     }else {
-        document.location.href="../../login.php";
+        document.location.href="login.php";
     }
 }
 export function init() {
