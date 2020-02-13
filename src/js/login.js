@@ -1,7 +1,7 @@
 function login() {
     console.log(2);
     $.post(
-        '../inc/login.inc.php',
+        'src/inc/login.inc.php',
         {
             mail : $("#inputEmailAddress").val(),
             pwd : $("#inputPassword").val()
@@ -13,7 +13,6 @@ function login() {
 }
 
 function returnData(Data){
-    console.log("zgueg");
     if (Data.sucess === false){
         console.log(1);
         switch (Data.error) {
@@ -28,7 +27,7 @@ function returnData(Data){
                 break;
         }
     }else {
-        document.location.href="../../index.php";
+        document.location.href="index.php";
     }
 }
 export function init() {
