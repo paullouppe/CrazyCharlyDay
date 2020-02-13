@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
-?>
+/*if (isset($_SESSION['userId'])){
+*/?>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -62,4 +63,9 @@
     </body>
 </html>
 <?php
-?>
+/*}
+else{
+    header('Location: ./login.php');
+    exit();
+}
+*/?>
