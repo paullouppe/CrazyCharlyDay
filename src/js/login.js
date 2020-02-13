@@ -1,5 +1,4 @@
 function login() {
-    console.log(2);
     $.post(
         '../inc/login.inc.php',
         {
@@ -13,9 +12,7 @@ function login() {
 }
 
 function returnData(Data){
-    console.log("zgueg");
     if (Data.sucess === false){
-        console.log(1);
         switch (Data.error) {
             case "emptyfields":
                 console.log("empty");
