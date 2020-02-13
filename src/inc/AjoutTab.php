@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_assoc($result)){
     $result2 = mysqli_stmt_get_result($statement2);
     $c = 0;
     while ($row2 = mysqli_fetch_assoc($result2)){$c;}
-    $json[]= array($row["prenom"],$c,$c,$c);
+    $json[]= array($row["nom"],$c,$c,$c);
 }
 
 $x = json_encode($json);

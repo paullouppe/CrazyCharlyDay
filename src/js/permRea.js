@@ -1,16 +1,13 @@
 function addTab() {
-    console.log(22);
     $.post(
-        './src/inc/AjoutTab.php',
+        'src/inc/AjoutTab.php',
         {},
         AddTab2,
         'json'
     );
-    console.log('./src/inc/AjoutTab.php');
 }
 
 function AddTab2(Data){
-    console.log("zgueg");
     let ajout = document.getElementById("tableauPermRea");
     console.log(Data);
     Data.forEach((e) => {
