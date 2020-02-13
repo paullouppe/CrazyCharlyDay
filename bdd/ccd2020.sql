@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 13 fév. 2020 à 13:35
+-- Généré le :  jeu. 13 fév. 2020 à 16:26
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -86,8 +86,8 @@ INSERT INTO `role` (`idRol`, `label`) VALUES
 
 CREATE TABLE `user` (
   `idUser` int(11) NOT NULL,
-  `nom` varchar(30) NOT NULL,
-  `prenom` varchar(50) NOT NULL,
+  `prenom` varchar(30) NOT NULL,
+  `nom` varchar(50) NOT NULL,
   `mail` varchar(50) NOT NULL,
   `pwd` varchar(100) NOT NULL,
   `grade` varchar(50) NOT NULL
@@ -97,8 +97,8 @@ CREATE TABLE `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`idUser`, `nom`, `prenom`, `mail`, `pwd`, `grade`) VALUES
-(1, 'Cassandre', '', '', '', ''),
+INSERT INTO `user` (`idUser`, `prenom`, `nom`, `mail`, `pwd`, `grade`) VALUES
+(1, 'Cassandre', '', '1@1.fr', '$2y$10$vXKqRysBreC4Vkjmu0MbS.srSLgQzERpye191m.jtb982tLp/aGIS', ''),
 (2, 'Achille', '', '', '', ''),
 (3, 'Calypso', '', '', '', ''),
 (4, 'Bacchus', '', '', '', ''),

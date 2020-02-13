@@ -125,7 +125,7 @@ if (isset($_SESSION['userId'])){
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
                 <?php
-                    echo $_SESSION['nom'];
+                    echo $_SESSION['prenom'];
                 ?>
             </div>
         </nav>
