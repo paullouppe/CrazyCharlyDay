@@ -1,8 +1,9 @@
 <?php
 
-$json = new JsonResponse();
+require_once 'JsonResponse.php';
 
-if(isset($_POST['login-submit'])){
+$json = new JsonResponse();
+if( isset($_POST['mail']) && isset($_POST['pwd'])){
     session_start();
     require 'dbh.inc.php';
 
@@ -10,11 +11,7 @@ if(isset($_POST['login-submit'])){
     $password = $_POST['pwd'];
 
 
-    //sanitizing
-    $username = filter_var($mail, FILTER_SANITIZE_STRING);
-
-
-    if (empty($mailuid) || empty($password)){
+    if (empty($mail) || empty($password)){
         //erreur emptyfields
         $json->addError("emptyfields");
         echo $json->getJson();
@@ -37,10 +34,9 @@ if(isset($_POST['login-submit'])){
                     $json->addError("wrongpassword");
                     echo $json->getJson();
                 }elseif ($pwdcheck == true){
-                    session_start();
                     $_SESSION['userId'] = $row['idUser'];
                     $json->addSucess();
-                    return $json->getJson();
+                    echo $json->getJson();
                 }else{
                     //unhandeled
                     $json->addError("unheandeled");
