@@ -1,6 +1,6 @@
 function signup() {
     $.post(
-        '../inc/signup.inc.php',
+        'src/inc/signup.inc.php',
         {
             prenom : $("#inputFirstName").val(),
             nom : $("#inputLastName").val(),
@@ -15,7 +15,6 @@ function signup() {
 }
 
 function returnData(Data){
-    console.log("zgueg");
     if (Data.sucess === false){
         console.log(1);
         switch (Data.error) {
@@ -30,7 +29,7 @@ function returnData(Data){
                 break;
         }
     }else {
-        document.location.href="../../login.php";
+        document.location.href="login.php";
     }
 }
 export function init() {
