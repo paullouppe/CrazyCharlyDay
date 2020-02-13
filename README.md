@@ -1,5 +1,5 @@
 # CrazyCharlyDay
 
 compte de test administrateur
-admin@admin.admin
+admin@admin.com
 Admin12345
