@@ -36,6 +36,7 @@ if( isset($_POST['mail']) && isset($_POST['pwd'])){
                 }elseif ($pwdcheck == true){
                     $_SESSION['userId'] = $row['idUser'];
                     $_SESSION['prenom'] = $row['prenom'];
+                    $_SESSION['grade'] = $row['grade'];
                     $json->addSucess();
                     echo $json->getJson();
                 }else{
