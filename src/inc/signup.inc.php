@@ -13,11 +13,12 @@ if (isset($_POST['nom'])) {
     $prenom = $_POST['prenom'];
     $email = $_POST['mail'];
     $password = $_POST['pwd'];
-    $passwordrepeat = $_POST['pwd-repeat'];
+    $passwordrepeat = $_POST['pwd_repeat'];
     $grade = "";
 
     //sanitizing
-    $username = filter_var($username, FILTER_SANITIZE_STRING);
+    $prenom = filter_var($prenom, FILTER_SANITIZE_STRING);
+    $nom = filter_var($nom, FILTER_SANITIZE_STRING);
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
     // Validate password strength
