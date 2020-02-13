@@ -126,13 +126,13 @@ if (isset($_SESSION['userId'])){
                         <div class="card bg-primary text-white mb-4">
                             <div class="card-body">Lundi</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 18h à 19h</a>
+                                <p class="small text-white " >Crénaux de 18h à 19h</p>
                                 <?php
                                 echo calculercreneau("Lundi", 18, $conn);
                                 ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 19h à 20h</a>
+                                <p class="small text-white ">Crénaux de 19h à 20h</p>
                                 <?php
                                 echo calculercreneau("Lundi", 19, $conn);
                                 ?>
@@ -150,25 +150,25 @@ if (isset($_SESSION['userId'])){
                         <div class="card bg-primary text-white mb-4">
                             <div class="card-body">Mercredi</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 10h à 11h</a>
+                                <p class="small text-white " ">Crénaux de 10h à 11h</p>
                                 <?php
                                 echo calculercreneau("Mercredi", 10, $conn);
                                 ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 11h à 12h</a>
+                                <p class="small text-white ">Crénaux de 11h à 12h</p>
                                 <?php
                                 echo calculercreneau("Mercredi", 11, $conn);
                                 ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 18h à 19h</a>
+                                <p class="small text-white " >Crénaux de 18h à 19h</p>
                                 <?php
                                 echo calculercreneau("Mercredi", 18, $conn);
                                 ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 19h à 20h</a>
+                                <p class="small text-white ">Crénaux de 19h à 20h</p>
                                 <?php
                                 echo calculercreneau("Mercredi", 19, $conn);
                                 ?>
@@ -186,13 +186,13 @@ if (isset($_SESSION['userId'])){
                         <div class="card bg-warning text-white mb-4">
                             <div class="card-body">Vendredi</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 18h à 19h</a>
+                                <p class="small text-white " >Crénaux de 18h à 19h</p>
                                 <?php
                                 echo calculercreneau("Vendredi", 18, $conn);
                                 ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 19h à 20h</a>
+                                <p class="small text-white " >Crénaux de 19h à 20h</p>
                                 <?php
                                 echo calculercreneau("Vendredi", 19, $conn);
                                 ?>
@@ -203,37 +203,37 @@ if (isset($_SESSION['userId'])){
                         <div class="card bg-success text-white mb-4">
                             <div class="card-body">Samedi</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 10h à 11h</a>
+                                <p class="small text-white " >Crénaux de 10h à 11h</p>
                                 <?php
                                 echo calculercreneau("Samedi", 10, $conn);
                                 ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 11h à 12h</a>
+                                <p class="small text-white " >Crénaux de 11h à 12h</p>
                                 <?php
                                 echo calculercreneau("Samedi", 11, $conn);
                                 ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 13h à 14h</a>
+                                <p class="small text-white " >Crénaux de 13h à 14h</p>
                                 <?php
                                 echo calculercreneau("Samedi", 13, $conn);
                                 ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 14h à 15h</a>
+                                <p class="small text-white " >Crénaux de 14h à 15h</p>
                                 <?php
                                 echo calculercreneau("Samedi", 14, $conn);
                                 ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 15h à 16h</a>
+                                <p class="small text-white " >Crénaux de 15h à 16h</p>
                                 <?php
                                 echo calculercreneau("Samedi", 15, $conn);
                                 ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 16h à 17h</a>
+                                <p class="small text-white " >Crénaux de 16h à 17h</p>
                                 <?php
                                 echo calculercreneau("Samedi", 16, $conn);
                                 ?>
@@ -244,13 +244,13 @@ if (isset($_SESSION['userId'])){
                         <div class="card bg-danger text-white mb-4">
                             <div class="card-body">Dimanche</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 10h à 11h</a>
+                                <p class="small text-white " >Crénaux de 10h à 11h</p>
                                 <?php
                                 echo calculercreneau("Dimanche", 10, $conn);
                                 ?>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white " href="semaine.php">Crénaux de 11h à 12h</a>
+                                <p class="small text-white " >Crénaux de 11h à 12h</p>
                                 <?php
                                 echo calculercreneau("Dimanche", 11, $conn);
                                 ?>
