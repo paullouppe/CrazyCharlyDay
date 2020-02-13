@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Ven 07 Février 2020 à 09:31
--- Version du serveur :  5.7.29-0ubuntu0.18.04.1
--- Version de PHP :  7.2.24-0ubuntu0.18.04.2
+-- Hôte : 127.0.0.1
+-- Généré le :  jeu. 13 fév. 2020 à 12:24
+-- Version du serveur :  10.4.6-MariaDB
+-- Version de PHP :  7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,8 +19,36 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `coboard`
+-- Base de données :  `crazycharlyday`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `besoin`
+--
+
+CREATE TABLE `besoin` (
+  `id` int(3) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `debut` date NOT NULL,
+  `fin` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `creneau`
+--
+
+CREATE TABLE `creneau` (
+  `idCreneau` int(3) NOT NULL,
+  `debut` date NOT NULL,
+  `idUser` int(3) NOT NULL,
+  `nomUser` varchar(50) NOT NULL,
+  `idRol` int(3) NOT NULL,
+  `labelRol` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -27,15 +57,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `role` (
-  `id` int(11) NOT NULL,
+  `idRol` int(11) NOT NULL,
   `label` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `role`
+-- Déchargement des données de la table `role`
 --
 
-INSERT INTO `role` (`id`, `label`) VALUES
+INSERT INTO `role` (`idRol`, `label`) VALUES
 (1, 'Caissier titulaire'),
 (2, 'Caissier assistant'),
 (3, 'Gestionnaire de vrac titulaire'),
@@ -50,59 +80,88 @@ INSERT INTO `role` (`id`, `label`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(30) CHARACTER SET utf8 NOT NULL
+  `idUser` int(11) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  `mail` varchar(50) NOT NULL,
+  `pwd` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `user`
+-- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `nom`) VALUES
-(1, 'Cassandre'),
-(2, 'Achille'),
-(3, 'Calypso'),
-(4, 'Bacchus'),
-(5, 'Diane'),
-(6, 'Clark'),
-(7, 'Helene'),
-(8, 'Jason'),
-(9, 'Bruce'),
-(10, 'Pénélope'),
-(11, 'Ariane'),
-(12, 'Lois');
+INSERT INTO `user` (`idUser`, `nom`, `mail`, `pwd`) VALUES
+(1, 'Cassandre', '', ''),
+(2, 'Achille', '', ''),
+(3, 'Calypso', '', ''),
+(4, 'Bacchus', '', ''),
+(5, 'Diane', '', ''),
+(6, 'Clark', '', ''),
+(7, 'Helene', '', ''),
+(8, 'Jason', '', ''),
+(9, 'Bruce', '', ''),
+(10, 'Pénélope', '', ''),
+(11, 'Ariane', '', ''),
+(12, 'Lois', '', '');
 
 --
--- Index pour les tables exportées
+-- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `besoin`
+--
+ALTER TABLE `besoin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `creneau`
+--
+ALTER TABLE `creneau`
+  ADD PRIMARY KEY (`idCreneau`),
+  ADD KEY `idUser` (`idUser`,`nomUser`,`idRol`,`labelRol`),
+  ADD KEY `fkidrol` (`idRol`);
 
 --
 -- Index pour la table `role`
 --
 ALTER TABLE `role`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idRol`);
 
 --
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idUser`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
 -- AUTO_INCREMENT pour la table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `creneau`
+--
+ALTER TABLE `creneau`
+  ADD CONSTRAINT `fkidrol` FOREIGN KEY (`idRol`) REFERENCES `role` (`idRol`),
+  ADD CONSTRAINT `fkiduser` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
