@@ -1,7 +1,7 @@
 function login() {
     console.log(2);
     $.post(
-        'http://localhost/CrazyCharlyDay/src/inc/login.inc.php',
+        '../inc/login.inc.php',
         {
             mail : $("#inputEmailAddress").val(),
             pwd : $("#inputPassword").val()
@@ -28,7 +28,7 @@ function returnData(Data){
                 break;
         }
     }else {
-        document.location.href="http://localhost/CrazyCharlyDay/index.php";
+        document.location.href="../../index.php";
     }
 }
 export function init() {

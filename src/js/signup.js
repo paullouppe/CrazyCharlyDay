@@ -1,6 +1,6 @@
 function signup() {
     $.post(
-        'http://localhost/CrazyCharlyDay/src/inc/signup.inc.php',
+        '../inc/signup.inc.php',
         {
             prenom : $("#inputFirstName").val(),
             nom : $("#inputLastName").val(),

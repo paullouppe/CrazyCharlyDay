@@ -29,8 +29,8 @@
                                             <input type="button" class="btn btn-primary text-center mt-lg-5" id="submitbutton" value="Connexion" /></div>
                                         </form>
                                     </div>
-                                    <div class="card-footer text-center">
-                                        <div class="small"><a href="register.php">Besoin d'un compte? Inscrivez-vous!</a></div>
+                                    <div class="card-footer bg-light text-center">
+                                        <div class="small text-white"><a href="register.php">Besoin d'un compte? Inscrivez-vous!</a></div>
                                     </div>
                                 </div>
                             </div>
