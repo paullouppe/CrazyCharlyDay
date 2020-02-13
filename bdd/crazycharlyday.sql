@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 13 fév. 2020 à 20:48
+-- Généré le :  jeu. 13 fév. 2020 à 21:04
 -- Version du serveur :  10.4.6-MariaDB
--- Version de PHP :  7.2.22
+-- Version de PHP :  7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,9 +41,31 @@ CREATE TABLE `besoin` (
 
 CREATE TABLE `creneau` (
   `idCreneau` int(3) NOT NULL,
-  `debut` date NOT NULL,
+  `debut` int(11) NOT NULL,
   `jour` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `creneau`
+--
+
+INSERT INTO `creneau` (`idCreneau`, `debut`, `jour`) VALUES
+(1, 18, 'Lundi'),
+(2, 19, 'Lundi'),
+(3, 10, 'Mercredi'),
+(4, 11, 'Mercredi'),
+(5, 18, 'Mercredi'),
+(6, 19, 'Mercredi'),
+(7, 18, 'Vendredi'),
+(8, 19, 'Vendredi'),
+(9, 10, 'Samedi'),
+(10, 11, 'Samedi'),
+(11, 13, 'Samedi'),
+(12, 14, 'Samedi'),
+(13, 15, 'Samedi'),
+(14, 16, 'Samedi'),
+(15, 10, 'Dimanche'),
+(16, 11, 'Dimanche');
 
 -- --------------------------------------------------------
 
@@ -112,7 +134,9 @@ INSERT INTO `user` (`idUser`, `nom`, `prenom`, `mail`, `pwd`, `grade`) VALUES
 (10, 'Pénélope', '', '', '', ''),
 (11, 'Ariane', '', '', '', ''),
 (12, 'Lois', '', '', '', ''),
-(16, 'Louppe', 'Paul', 'paullouppe@gmail.com', '$2y$10$A9c6V1HElwmuZhwKismff.S.G.hUAGucxsL/T0LzReiMUIZOCPE3C', '');
+(16, 'Louppe', 'Paul', 'paullouppe@gmail.com', '$2y$10$A9c6V1HElwmuZhwKismff.S.G.hUAGucxsL/T0LzReiMUIZOCPE3C', ''),
+(17, 'bhhjvbvuj', 'cczt', 'zvuzuvhj@hgcvghgc.fr', '$2y$10$trV5st3Tfms4NMHA0HZ1wOE34EXam1y.eOigPmy1FOK0xgYYkr87i', ''),
+(18, 'Chiappini', 'Eros', 'echiapp@free.fr', '$2y$10$4Lm7VuFArz7Qmp0P2QXG2eY/iZ6rpkxWOgwp.cyXB488OfTeJlR2K', '');
 
 --
 -- Index pour les tables déchargées
@@ -165,7 +189,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Contraintes pour les tables déchargées
