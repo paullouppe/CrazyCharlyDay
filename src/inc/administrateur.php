@@ -15,7 +15,7 @@ function calculercreneau($jour, $debut, $conn){
         $nbidbesoin = mysqli_stmt_num_rows($statementidbesoin);
 
         if ($nbidbesoin == 0){
-            return "<a class=\"small text-white \" href=\"formulaire.php\">Ajouter besoin</a>";
+            return "<a class=\"small text-white \" href=\"ajouterbesoin.php\">Ajouter besoin</a>";
         }elseif ($nbidbesoin == 1){
             $resultbesoin = mysqli_stmt_get_result($statementidbesoin);
             $row = mysqli_fetch_assoc($resultbesoin);
@@ -23,19 +23,41 @@ function calculercreneau($jour, $debut, $conn){
             $idcreneau = $row['idcreneau'];
 
             $sqliduserdubesoin = "SELECT idUser from estasigne where estasigne.idBesoin = ? and estasigne.idCreneau = ?;";
-            $statementuserbesoin = mysqli_stmt_init(getConn());
+            $statementuserbesoin = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($statementuserbesoin, $sqliduserdubesoin)){
                 //sqlerror
             }else{
                 mysqli_stmt_bind_param($statementuserbesoin, "ii", $idbesoin, $idcreneau);
                 mysqli_stmt_execute($statementuserbesoin);
                 mysqli_stmt_store_result($statementuserbesoin);
-                $nbbb = mysqli_stmt_num_rows($statementuserbesoin);
-                if ($nbbb == 0){
-                    return "code";
+                $nbuserpourcebesoin = mysqli_stmt_num_rows($statementuserbesoin);
+                if ($nbuserpourcebesoin == 0){
+                    $sqlnombesoin = "select nom from besoin where idBesoin = ?";
+                    $statementnombesoin = mysqli_stmt_init($conn);
+                    if (!mysqli_stmt_prepare($statementnombesoin, $sqlnombesoin)){
+                        //sqlerror
+                    }else {
+                        mysqli_stmt_bind_param($statementnombesoin, "i", $idbesoin);
+                        mysqli_stmt_execute($statementnombesoin);
+                        $resultnombesoin = mysqli_stmt_get_result($statementnombesoin);
+                        $row = mysqli_fetch_assoc($resultnombesoin);
+                        $nombesoin = $row['nom'];
+                        return "<p>".$nombesoin."</p><a class=\"small text-white \" href=\"modifierbesoin.php\">Ajouter besoin</a>";
+                    }
                 }
                 else{
-                    return "code";
+                    $sqlnombesoin = "select nom from besoin where idBesoin = ?";
+                    $statementnombesoin = mysqli_stmt_init($conn);
+                    if (!mysqli_stmt_prepare($statementnombesoin, $sqlnombesoin)){
+                        //sqlerror
+                    }else {
+                        mysqli_stmt_bind_param($statementnombesoin, "i", $idbesoin);
+                        mysqli_stmt_execute($statementnombesoin);
+                        $resultnombesoin = mysqli_stmt_get_result($statementnombesoin);
+                        $row = mysqli_fetch_assoc($resultnombesoin);
+                        $nombesoin = $row['nom'];
+                        return "<p>".$nombesoin."nom personne qui s'en occupe</p>";
+                    }
                 }
             }
         }
