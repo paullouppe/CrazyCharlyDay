@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 13 fév. 2020 à 16:26
+-- Généré le :  jeu. 13 fév. 2020 à 20:43
 -- Version du serveur :  10.4.6-MariaDB
--- Version de PHP :  7.3.9
+-- Version de PHP :  7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `besoin` (
-  `id` int(3) NOT NULL
+  `id` int(3) NOT NULL,
+  `idcreneau` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -40,7 +41,8 @@ CREATE TABLE `besoin` (
 
 CREATE TABLE `creneau` (
   `idCreneau` int(3) NOT NULL,
-  `debut` date NOT NULL
+  `debut` date NOT NULL,
+  `jour` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -86,8 +88,8 @@ INSERT INTO `role` (`idRol`, `label`) VALUES
 
 CREATE TABLE `user` (
   `idUser` int(11) NOT NULL,
-  `prenom` varchar(30) NOT NULL,
-  `nom` varchar(50) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
   `mail` varchar(50) NOT NULL,
   `pwd` varchar(100) NOT NULL,
   `grade` varchar(50) NOT NULL
@@ -97,8 +99,8 @@ CREATE TABLE `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`idUser`, `prenom`, `nom`, `mail`, `pwd`, `grade`) VALUES
-(1, 'Cassandre', '', '1@1.fr', '$2y$10$vXKqRysBreC4Vkjmu0MbS.srSLgQzERpye191m.jtb982tLp/aGIS', ''),
+INSERT INTO `user` (`idUser`, `nom`, `prenom`, `mail`, `pwd`, `grade`) VALUES
+(1, 'Cassandre', '', '1@1.fr', '$2y$10$fZaTwP9cfm702iLPyAS37uBZuW/YZg445MDtblfbHq1sjFwNBdkoO', ''),
 (2, 'Achille', '', '', '', ''),
 (3, 'Calypso', '', '', '', ''),
 (4, 'Bacchus', '', '', '', ''),
@@ -109,7 +111,8 @@ INSERT INTO `user` (`idUser`, `prenom`, `nom`, `mail`, `pwd`, `grade`) VALUES
 (9, 'Bruce', '', '', '', ''),
 (10, 'Pénélope', '', '', '', ''),
 (11, 'Ariane', '', '', '', ''),
-(12, 'Lois', '', '', '', '');
+(12, 'Lois', '', '', '', ''),
+(16, 'Louppe', 'Paul', 'paullouppe@gmail.com', '$2y$10$A9c6V1HElwmuZhwKismff.S.G.hUAGucxsL/T0LzReiMUIZOCPE3C', '');
 
 --
 -- Index pour les tables déchargées
@@ -119,7 +122,8 @@ INSERT INTO `user` (`idUser`, `prenom`, `nom`, `mail`, `pwd`, `grade`) VALUES
 -- Index pour la table `besoin`
 --
 ALTER TABLE `besoin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `creneaudansbesoin` (`idcreneau`);
 
 --
 -- Index pour la table `creneau`
@@ -161,11 +165,17 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `besoin`
+--
+ALTER TABLE `besoin`
+  ADD CONSTRAINT `creneaudansbesoin` FOREIGN KEY (`idcreneau`) REFERENCES `creneau` (`idCreneau`);
 
 --
 -- Contraintes pour la table `estasigne`
